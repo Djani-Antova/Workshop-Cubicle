@@ -7,4 +7,4 @@ const config = {
         PORT: 5000
     } 
 }
-module.exports = config[process.env || 'development']
+module.exports = config[process.env.node_env || 'development']
