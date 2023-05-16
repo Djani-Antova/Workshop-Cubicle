@@ -5,6 +5,6 @@ const app = express();
 
 app.get('/', (req, res) => {
     res.send('Home Page')
-})
+});
 
-app.listen(config.PORT, () => console.log(`Server is running on ${config.PORT}...` ))
+app.listen(config.development.PORT, () => console.log(`Server is running on ${config.development.PORT}...` ))
