@@ -1,3 +1,27 @@
 {
-    "cubes":[]
+  "cubes": [
+    {
+      "id": 1,
+      "name": {
+        "name": "Test",
+        "description": "Test",
+        "imageUrl": "Test",
+        "difficultyLevel": "1"
+      }
+    },
+    {
+      "id": 2,
+      "name": "2",
+      "description": "2",
+      "imageUrl": "2",
+      "difficultyLevel": "1"
+    },
+    {
+      "id": 3,
+      "name": "3",
+      "description": "3",
+      "imageUrl": "3",
+      "difficultyLevel": "5"
+    }
+  ]
 }
