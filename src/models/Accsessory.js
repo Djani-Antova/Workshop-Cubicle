@@ -9,6 +9,7 @@ const accessorySchema = new mongoose.Schema({
         type: String,
         required: true,
         // Add http/http validation
+         match: [/^https?:\/\//, 'Invalid URL' ]
 
     },
     description: {
@@ -16,10 +17,7 @@ const accessorySchema = new mongoose.Schema({
         required: true,
         maxLength: 50  
     }, 
-    // cubes: {
-    //     type: isObjectIdOrHexString,
-    //     ref: CubesModel  
-    // }
+
   }); 
   const Accessory = mongoose.model('Accessory', accessorySchema);
 
