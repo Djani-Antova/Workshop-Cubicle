@@ -15,6 +15,7 @@ router.use('/', authController)
 
 router.get('/cubes/create', cubeController.getCreateCube);
 router.post('/cubes/create', cubeController.postCreateCube);
+
 router.get('/cubes/:cubeId/details', cubeController.getDetails);
 router.get( '/cubes/:cubeId/attach', cubeController.getAttachAccessory)
 router.post( '/cubes/:cubeId/attach', cubeController.postAttachAccessory)
