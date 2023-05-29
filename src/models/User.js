@@ -5,7 +5,7 @@ const userSchema = new mongoose.Schema({
     username: {
         type: String,
         required: true,
-        minCharacter: 3
+        minLength: 3
     },        
     password: {
         type: String,
@@ -19,12 +19,12 @@ userSchema.pre('save', function(next) {
         .then(hash => {
             this.password = hash;
 
-            next()
+            next();
         })
 });
 
-userSchema.method('validatePassword',  function(password) {
-    return bcrypt.compare(password, this.password )
+userSchema.method('validatePassword', function(password) {
+    return bcrypt.compare(password, this.password);
 });
 
 const User = mongoose.model('User', userSchema);

@@ -11,7 +11,7 @@ router.post('/login', async (req, res) => {
 
     try {
         const token = await authService.login(username, password);
-
+      
         res.cookie('auth', token, {httpOnly: true}); 
 
     } catch (err) {
@@ -29,13 +29,13 @@ router.post('/register', async (req, res) => {
     const { username, password, repeatPassword } = req.body;
 
     if (password !== repeatPassword) {
-        return res.redirect('/404');
+        return res.redirect('/404')
     }
 
     const existingUser = await authService.getUserByUsername(username);
 
     if (existingUser) {
-        return res.redirect('/404');
+        return res.redirect('/404')
     }
 
     const user = await authService.register(username, password);
