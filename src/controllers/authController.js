@@ -41,9 +41,13 @@ router.post('/register', async (req, res) => {
     const user = await authService.register(username, password);
     console.log(user);
 
-    res.redirect('/login')
+    res.redirect('/login');
+});
 
+router.get('/logout', (req, res) => {
+    res.clearCookie('auth');
 
+    res.redirect('/');
 })
 
 module.exports = router;
