@@ -49,15 +49,28 @@ exports.postAttachAccessory = async (req, res) => {
 }
 
 exports.getEditCube = async (req, res) => {
-    const cube = await cubeService.getOne(req.params.cubeId);
+    const cube = await cubeService.getOne(req.params.cubeId).lean()
     const difficultyLevels = cubeUtils.generateDifficultyLevel(cube.difficultyLevel)
 
     res.render('cube/edit', { cube, difficultyLevels })
 };
 
+exports.postEditCube = async (req, res) => {
+    const { name, description, imageUrl, difficultyLevel } = req.body;    
+
+    await cubeService.update(req.params.cubeId, { 
+        name, 
+        description, 
+        imageUrl, 
+        difficultyLevel 
+    });
+
+    res.redirect(`/cubes/${req.params.cubeId}/details`);
+}
+
 
 exports.getDeleteCube = async (req, res) => {
-    const cube = await cubeService.getOne(req.params.cubeId);
+    const cube = await cubeService.getOne(req.params.cubeId).lean();
     const difficultyLevels = cubeUtils.generateDifficultyLevel(cube.difficultyLevel)
 
 
