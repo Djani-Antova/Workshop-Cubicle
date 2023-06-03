@@ -5,13 +5,23 @@ const userSchema = new mongoose.Schema({
     username: {
         type: String,
         required: true,
-        minLength: 3,
+        minLength:[ 5, 'Username is too short'],
+        unique: true,
+        //validate: /^[a-zA=Z0-9]+$/
+        validate: {
+            validator: function(value) {
+                return /^[a-zA=Z0-9]+$/.test(value)
+            },
+            message: "Username shoul consist only of eng letters and digits!"
+        }
     },
     password: {
         type: String,
         required: true,
-        minLength: [6, 'Password is too short!'],
-    }
+        minLength: [8, 'Password is too short!'],
+        validate: /^[a-zA=Z0-9]+$/
+    },
+   
 });
 
 userSchema.pre('save', function(next) {
